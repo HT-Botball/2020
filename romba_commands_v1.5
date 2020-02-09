@@ -1,0 +1,49 @@
+#include <kipr/botball.h>
+
+void left()
+{
+        create_drive_direct(0,100);
+        msleep(3400);
+}
+
+void right()
+{
+        create_drive_direct(100,0);
+        msleep(3400);
+}
+
+void forward()
+    // 1000 msleep = 4.5 inches
+	// 4888.8 (with a bar) = 21 inches
+    // 13333.3 (with a bar) = 60 inches
+{
+        create_drive_direct(100,100);
+}
+void backward()
+{
+        create_drive_direct(-100,-100);
+}
+
+void fast()
+{
+        create_drive_direct(1000,1000);
+}
+
+void ram()
+{
+    while(get_create_lbump() == 0 && get_create_rbump() == 0)
+    {
+    	fast();
+        msleep(500);
+    }
+
+}
+
+void untill_bumped()
+{
+    while(get_create_lbump() == 0 && get_create_rbump() == 0)
+    {
+    	forward();
+        msleep(500);
+    }
+}
