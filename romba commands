@@ -1,0 +1,59 @@
+#include <kipr/botball.h>
+#include </home/root/Documents/KISS/Default User/Romba_Commands/src/main.c>
+int i;
+// list of commands
+//fast
+//forward
+//backward
+//left
+//right
+//ram
+//untill_pushed
+int main()
+{
+//    wait_for_light(0);
+    create_connect();
+    create_full();
+    backward();
+    msleep(2000);
+    untill_bumped();
+    enable_servos();
+  //move claw to grab poms  
+  //pull claw back
+    backward();
+    msleep(2000);
+  //loop 3 times:
+    for(i=0; i<=3; i++){
+        //turn left 90 degrees
+        //move forward to next platform
+        //turn right 90 degrees
+        //move claw to grab poms
+        //pull claw back
+        left();
+        forward();
+        msleep(2000);
+        right();
+        set_servo_position(0,1000);
+        forward(1000);
+        set_servo_position(0,2000);
+        backward();
+        msleep(1500);
+        
+    }
+
+    
+    
+
+   /*    printf("Hello World\n");
+    ram();
+    backward();
+    msleep(3000);
+    ram();
+    backward();
+    msleep(3000);
+    ram();
+    backward();
+    msleep(3000);*/
+    create_disconnect();
+    return 0;
+}
